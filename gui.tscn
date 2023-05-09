@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvmbmsnlblwhv"]
+
+[ext_resource type="Theme" uid="uid://cuwxdj14oc2ta" path="res://default_theme.tres" id="1_j4exx"]
+[ext_resource type="Script" path="res://gui.gd" id="1_ksl6c"]
+[ext_resource type="Texture2D" uid="uid://dwowhtfr5aouj" path="res://Assets/Documents.png" id="2_lje2s"]
+[ext_resource type="Texture2D" uid="uid://dj1dfj4lvnsl3" path="res://Assets/Heart.png" id="3_v15v8"]
+
+[node name="GUI" type="CanvasLayer" groups=["GUI"]]
+script = ExtResource("1_ksl6c")
+
+[node name="LblScore" type="Label" parent="."]
+offset_left = 8.0
+offset_right = 64.0
+offset_bottom = 21.0
+theme = ExtResource("1_j4exx")
+text = "Score:"
+horizontal_alignment = 2
+
+[node name="LblScoreCounter" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 39.0
+theme = ExtResource("1_j4exx")
+text = "000000"
+horizontal_alignment = 2
+
+[node name="DocumentRect" type="TextureRect" parent="."]
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 32.0
+texture = ExtResource("2_lje2s")
+stretch_mode = 2
+
+[node name="LblDocuments" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 37.0
+theme = ExtResource("1_j4exx")
+text = "x 00"
+horizontal_alignment = 2
+
+[node name="LblTime" type="Label" parent="."]
+offset_left = 144.0
+offset_right = 184.0
+offset_bottom = 21.0
+theme = ExtResource("1_j4exx")
+text = "Time:"
+horizontal_alignment = 2
+
+[node name="LblTimeCounter" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 37.0
+theme = ExtResource("1_j4exx")
+text = "000"
+horizontal_alignment = 2
+
+[node name="LblLives" type="Label" parent="."]
+offset_left = 216.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 37.0
+theme = ExtResource("1_j4exx")
+text = "x 00"
+horizontal_alignment = 2
+
+[node name="HeartRect" type="TextureRect" parent="."]
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 216.0
+offset_bottom = 32.0
+texture = ExtResource("3_v15v8")
+stretch_mode = 2

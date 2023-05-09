@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2eblaa4t5lqm"]
+
+[ext_resource type="Script" path="res://InformedWater.gd" id="1_hgvl7"]
+[ext_resource type="Texture2D" uid="uid://d2iumuupnc4so" path="res://Assets/Watertop_1.png" id="2_wljw5"]
+[ext_resource type="Texture2D" uid="uid://cnebjvnn11wk" path="res://Assets/Watertop_2.png" id="3_8kipl"]
+[ext_resource type="Texture2D" uid="uid://ca4ennbiqrn40" path="res://Assets/Watertop_3.png" id="4_ocgya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bulut"]
+size = Vector2(16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byp0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wljw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8kipl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ocgya")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="InformedWater" type="Area2D"]
+script = ExtResource("1_hgvl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bulut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_byp0t")
+autoplay = "default"
+frame_progress = 0.266784
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

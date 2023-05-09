@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lajjpwewxx6"]
+
+[ext_resource type="Texture2D" uid="uid://v4ycljdsutmd" path="res://Assets/BG2.png" id="1_brdyb"]
+[ext_resource type="Texture2D" uid="uid://85s2gr10dluf" path="res://Assets/BG1.png" id="2_264ge"]
+
+[node name="BackgroundCity" type="ParallaxBackground"]
+
+[node name="HousesFront" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.95)
+motion_mirroring = Vector2(256, 0)
+
+[node name="TextureRect" type="TextureRect" parent="HousesFront"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_brdyb")
+
+[node name="HousesBack" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 0.98)
+motion_mirroring = Vector2(256, 0)
+
+[node name="TextureRect" type="TextureRect" parent="HousesBack"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_264ge")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn2uoetrrr8qf"]
+
+[ext_resource type="PackedScene" uid="uid://cb6jrf75uwc6d" path="res://Characters/glo_bully.tscn" id="1_f4s7o"]
+[ext_resource type="Script" path="res://Applethrower.gd" id="2_404gq"]
+
+[node name="Applethrower" instance=ExtResource("1_f4s7o")]
+script = ExtResource("2_404gq")
+
+[node name="CollisionShape2D" parent="HurtArea" index="0"]
+debug_color = Color(0.690196, 0.419608, 0.701961, 0.419608)
+
+[node name="JumpTimer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

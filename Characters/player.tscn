@@ -1,0 +1,202 @@
+[gd_scene load_steps=28 format=3 uid="uid://du36s7xukdifh"]
+
+[ext_resource type="Texture2D" uid="uid://c7apcht5jt8s3" path="res://Assets/Player.png" id="1_hj26r"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_htl2l"]
+[ext_resource type="PackedScene" uid="uid://e27xyieyh7l8" path="res://projectile.tscn" id="2_tkubj"]
+[ext_resource type="Texture2D" uid="uid://cckbvmuim6s0p" path="res://Assets/Remfort_Diamond.png" id="3_3uud3"]
+[ext_resource type="PackedScene" uid="uid://brdqadljtanhm" path="res://Backgrounds/background_trees.tscn" id="4_nc6nk"]
+[ext_resource type="Texture2D" uid="uid://bu7hy1fn76hac" path="res://Assets/RR_walk1.png" id="5_knnuh"]
+[ext_resource type="Texture2D" uid="uid://uxxurkm7nrx" path="res://Assets/RR_Jump.png" id="5_qiu7c"]
+[ext_resource type="Texture2D" uid="uid://dgucdvmfwccia" path="res://Assets/RR_walk3.png" id="6_bf2tq"]
+[ext_resource type="Texture2D" uid="uid://dr2puuogot0hd" path="res://Assets/RR_walk2.png" id="6_i6ktx"]
+[ext_resource type="Texture2D" uid="uid://ol6bqvfdxy67" path="res://Assets/RR_Jump_Diamond.png" id="6_kyrsq"]
+[ext_resource type="Texture2D" uid="uid://1r2sb0rq301m" path="res://Assets/NW1.png" id="7_0di3n"]
+[ext_resource type="Texture2D" uid="uid://bxcw70n7pfi3b" path="res://Assets/NW.png" id="7_5237u"]
+[ext_resource type="Texture2D" uid="uid://c81246ycjilfy" path="res://Assets/NW2.png" id="8_ct1um"]
+[ext_resource type="Texture2D" uid="uid://cr5bexo6fqagw" path="res://Assets/RR_walk1_Diamond.png" id="8_l5ur6"]
+[ext_resource type="Texture2D" uid="uid://cfadv5ppemjrs" path="res://Assets/NW_Diamond.png" id="8_mybs6"]
+[ext_resource type="Texture2D" uid="uid://ch4f7bvntxvht" path="res://Assets/NW_jump.png" id="8_oldhl"]
+[ext_resource type="Texture2D" uid="uid://b3frpl1dctjov" path="res://Assets/NW3.png" id="9_2414o"]
+[ext_resource type="Texture2D" uid="uid://d1l4ocvnwk2vw" path="res://Assets/RR_walk3_Diamond.png" id="9_jeqqn"]
+[ext_resource type="Texture2D" uid="uid://bh1ouwui5px8u" path="res://Assets/RR_walk2_Diamond.png" id="10_ek1sb"]
+[ext_resource type="Texture2D" uid="uid://b2p7ksua1k5y" path="res://Assets/NW_jump_Diamond.png" id="10_rgtmu"]
+[ext_resource type="Texture2D" uid="uid://ccjf8yq5i1v63" path="res://Assets/NW1_Diamond.png" id="14_g5x2o"]
+[ext_resource type="Texture2D" uid="uid://4lciomqi3mqw" path="res://Assets/NW2_Diamond.png" id="15_pyno3"]
+[ext_resource type="Texture2D" uid="uid://57ycxi1fnb23" path="res://Assets/NW3_Diamond.png" id="16_3gwas"]
+[ext_resource type="PackedScene" uid="uid://b4lajjpwewxx6" path="res://Backgrounds/background_city.tscn" id="23_gc3pb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tb5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hj26r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3uud3")
+}],
+"loop": true,
+"name": &"idle_diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qiu7c")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kyrsq")
+}],
+"loop": true,
+"name": &"jump_diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5237u")
+}],
+"loop": true,
+"name": &"nw_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mybs6")
+}],
+"loop": true,
+"name": &"nw_idle_diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_oldhl")
+}],
+"loop": true,
+"name": &"nw_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rgtmu")
+}],
+"loop": true,
+"name": &"nw_jump_diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0di3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ct1um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2414o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ct1um")
+}],
+"loop": true,
+"name": &"nw_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_g5x2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pyno3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3gwas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pyno3")
+}],
+"loop": true,
+"name": &"nw_walk_diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_knnuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bf2tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i6ktx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bf2tq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_l5ur6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jeqqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ek1sb")
+}],
+"loop": true,
+"name": &"walk_diamond",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v580g"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uctkm"]
+size = Vector2(18, 4)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 26
+script = ExtResource("1_htl2l")
+Projectile = ExtResource("2_tkubj")
+BackgroundCity = ExtResource("23_gc3pb")
+BackgroundTrees = ExtResource("4_nc6nk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1tb5y")
+animation = &"nw_idle_diamond"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v580g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(24, 8)
+limit_left = 0
+limit_bottom = 512
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PlayerAttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttackArea"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_uctkm")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

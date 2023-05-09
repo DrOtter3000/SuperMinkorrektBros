@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckqpdnxpuloy7"]
+
+[ext_resource type="Script" path="res://Characters/revitalisation_unit.gd" id="1_6grpy"]
+[ext_resource type="Texture2D" uid="uid://du6b3w8pewfhk" path="res://Assets/Mixer.png" id="1_prjdf"]
+[ext_resource type="PackedScene" uid="uid://c2eblaa4t5lqm" path="res://informed_water.tscn" id="2_61iws"]
+
+[node name="RevitalisationUnit" type="Node2D"]
+script = ExtResource("1_6grpy")
+water = ExtResource("2_61iws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_prjdf")
+
+[node name="WaterTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="WaterTimer" to="." method="_on_water_timer_timeout"]

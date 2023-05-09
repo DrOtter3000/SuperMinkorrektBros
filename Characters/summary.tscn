@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhtj0vft41t8c"]
+
+[ext_resource type="Script" path="res://Characters/summary.gd" id="1_a8ps7"]
+[ext_resource type="Theme" uid="uid://cuwxdj14oc2ta" path="res://default_theme.tres" id="2_qv0o6"]
+
+[node name="Summary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8ps7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LblSuccess" type="Label" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+theme = ExtResource("2_qv0o6")
+text = "SUCCESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LblScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 248.0
+offset_bottom = 192.0
+theme = ExtResource("2_qv0o6")
+text = "Lorem Ipsum"
+vertical_alignment = 1
+
+[node name="LblPressJump" type="Label" parent="."]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 224.0
+theme = ExtResource("2_qv0o6")
+text = "Press JUMP to continue"
+horizontal_alignment = 1
+vertical_alignment = 1

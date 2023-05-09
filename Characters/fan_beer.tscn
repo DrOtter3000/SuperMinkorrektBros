@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1u8xleee7j3j"]
+
+[ext_resource type="Script" path="res://FanBeer.gd" id="1_e3xpk"]
+[ext_resource type="Texture2D" uid="uid://b082kooqq1612" path="res://Assets/Fanbeer.png" id="2_wxbol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knal4"]
+size = Vector2(16, 16)
+
+[node name="FanBeer" type="Node2D"]
+script = ExtResource("1_e3xpk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wxbol")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_knal4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

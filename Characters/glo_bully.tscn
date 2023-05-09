@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=3 uid="uid://cb6jrf75uwc6d"]
+
+[ext_resource type="Script" path="res://Glo-Bully.gd" id="1_ottpy"]
+[ext_resource type="Texture2D" uid="uid://bah71oq5rsoyo" path="res://Assets/Glo-Bully2.png" id="2_w7tiq"]
+[ext_resource type="Texture2D" uid="uid://bfjmqskkwhd74" path="res://Assets/Glo-Bully.png" id="2_xlrss"]
+[ext_resource type="AudioStream" uid="uid://brxno8l4w58ae" path="res://Assets/SFX/SFX_creatureDie4.wav" id="3_mfb6a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_en26c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w7tiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xlrss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7cw"]
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on2ch"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkyfc"]
+size = Vector2(14, 4)
+
+[sub_resource type="Animation" id="Animation_fea6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hdvav"]
+resource_name = "die"
+length = 2.0
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4qh02"]
+_data = {
+"RESET": SubResource("Animation_fea6s"),
+"die": SubResource("Animation_hdvav")
+}
+
+[node name="Glo-Bully" type="CharacterBody2D" groups=["Mobs"]]
+collision_layer = 4
+collision_mask = 34
+script = ExtResource("1_ottpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_en26c")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fj7cw")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 84
+collision_mask = 97
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_on2ch")
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 68
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_hkyfc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4qh02")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mfb6a")
+volume_db = -8.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="area_entered" from="HurtArea" to="." method="_on_hurt_area_area_entered"]
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

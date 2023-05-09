@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://e27xyieyh7l8"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_n7c6k"]
+[ext_resource type="Texture2D" uid="uid://c8ref7h5ocern" path="res://Assets/Projectile.png" id="2_8e5lp"]
+[ext_resource type="AudioStream" uid="uid://tydb6anfa7q2" path="res://Assets/SFX/laser_4.wav" id="3_vr2jr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of0a8"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqmwg"]
+size = Vector2(3, 3)
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_n7c6k")
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_of0a8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8e5lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wqmwg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vr2jr")
+volume_db = -10.306
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.17233e-07, 4.17233e-07)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="body_entered" from="HurtArea" to="." method="_on_hurt_area_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

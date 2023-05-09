@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cuwxdj14oc2ta"]
+
+[ext_resource type="FontFile" uid="uid://cwdxsqnohf01a" path="res://Fonts/8-bit-operator/8bitOperatorPlus-Bold.ttf" id="1_cshic"]
+
+[resource]
+default_font = ExtResource("1_cshic")
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 12
